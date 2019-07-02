@@ -27,7 +27,7 @@
         <button onclick="back()"  style="left: 20px; top: 20px; position: fixed; display: block; background: none;border-width: 0px;"><span><img style="width: 60px;" src="../assets/images/back_btn.png" alt=""></span></button>
 
             <div id="title_Challenge_area">
-                <h1 id="title" class="uk-margin-small-bottom"><span><img id="icon-title" src="../assets/images/5904.png" alt=""></span> عنوان چالش</h1>
+                <h1 id="title" class="uk-margin-small-bottom"><span><img id="icon-title" src="../assets/images/5904.png" alt=""></span> آشنایی و استفاده از متغیر ها</h1>
                 <p id="descript" class="uk-margin-small-bottom"><i class='fas fa-circle' style="font-size: 17px"></i>&nbsp;&nbsp;&nbsp;توضیح مختصری از چالش</p>
                 <div id="blocklyDiv" style="height: 400px; width: 90%; margin: 0 auto;">
                 </div>
@@ -54,7 +54,6 @@
             <block type="luck_start_app"></block>
             <block type="math_number"></block>
             <block type="lucky_addtownumber"></block>
-            <block type="text"></block>
             <block type="text_print"></block>
         </category>
 
@@ -114,7 +113,10 @@
         faild.show();
     }
     $('#faild').click(() => {
-        faild.hide('1000');
+        faild.hide(1000);
+    })
+    $('#success').click(() => {
+        success.hide(1000)
     })
     document.__failed = failed;
     workspace.addChangeListener(myUpdateFunction);
