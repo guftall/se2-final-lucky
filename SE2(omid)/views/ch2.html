@@ -126,6 +126,8 @@
         let printBlockExist = false;
         let variableSet = 0;
 
+        var __loopBlock = null;
+
         let startBlock = -1;
         for (let block of blocks) {
             console.log(block.type);
@@ -183,6 +185,7 @@
                     return;
                 } else {
                     loopBlock = true;
+                    __loopBlock = block;
                 }
             } else if (block.type == 'luck_start_app') {
                 if (startBlock == -1) {
@@ -195,6 +198,7 @@
                 // console.log(block.getFieldValue('TEXT'));
             }
         }
+
 
         if (startBlock == -1) {
             alert('بلاک شروع ایجاد نشده است');
@@ -226,9 +230,61 @@
             document.__failed();
             return;
         }
-        
 
-        console.log(variableValues);
+
+
+        var loopVarSet;
+        var _loopVariableValue = null;
+        // loop validation
+        for (let child of __loopBlock.childBlocks_) {
+
+            if (child.type == 'math_number') {
+
+                _loopVariableValue = +child.getFieldValue('NUM');
+                break;
+            }
+        }
+
+        if (_loopVariableValue == null) {
+
+            alert('حلقه باید توسط مقدار ده، مقدار دهی شود');
+            document.__failed();
+            return;
+        }
+
+
+        if (_loopVariableValue != 10) {
+            alert('تعداد تکرار حلقه باید ۱۰ باشد');
+            document.__failed();
+            return;
+        }
+
+        // validate blocks of loop
+        console.log(__loopBlock.childBlocks_)
+
+        let ______loopSetVar = null;
+        for (let ___a of __loopBlock.childBlocks_) {
+            if (___a.type == 'variables_set') {
+                ______loopSetVar = ___a;
+                break;
+            }
+        }
+
+        if (______loopSetVar == null) {
+
+            alert('اولین بلاک درون حلقه باید بلاک افزایش دهنده باشد')
+            document.__failed();
+            return;
+        }
+
+        if (______loopSetVar.childBlocks_.length != 1 || ______loopSetVar.childBlocks_[0].type != 'lucky_varible_inc') {
+
+            alert('بلاک افزایش دهنده در جای مناسب حلقه وجود ندارد')
+            document.__failed();
+            return;
+        }
+
+        
         eval(code);
         if (+variableValues[0] + +variableValues[1] == 15) {
 
@@ -242,7 +298,7 @@
 
     
     function back() {
-        window.location.href = 'ch1_learn.html'
+        window.location.href = 'ch2_learn.html'
     }
 
 </script>
