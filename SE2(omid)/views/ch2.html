@@ -119,42 +119,53 @@
     workspace.addChangeListener(myUpdateFunction);
     $('#run').click(function() {
         var blocks = workspace.getAllBlocks();
-        var variableBlocks = [];
-        var variableValues = [];
-        let addBlockExist = false;
+        var mathSetVar = 0;
+        var variableGet = false;
+        var loopBlock = false;
+        var incBlock = false;
         let printBlockExist = false;
+        let variableSet = 0;
 
         let startBlock = -1;
         for (let block of blocks) {
+            console.log(block.type);
             if (block.type == 'math_number') {
-                if (variableBlocks.length < 2) {
-                    variableBlocks.push(block);
-
-                    let val = block.getFieldValue('NUM');
-                    variableValues.push(val);
-                } else {
-                    alert('در این چالش فقط به دو متغیر نیاز است. لطفا فقط دو متغیر تعریف کنید.')
-                        document.__failed();
+                if (mathSetVar > 1) {
+                    alert('در این چالش فقط دو بلاک مقداردهی متغیر میتوان ساخت');
+                    document.__failed();
                     return;
+                } else {
+                    ++mathSetVar;
                 }
                 
-            } else if (block.type == 'lucky_addtownumber') {
-                if (addBlockExist == true) {
-                    alert('در این چالش فقط یک بلاک جمع کننده میتوان ساخت.')
+            } else if (block.type == 'variables_get') {
+                if (variableGet == true) {
+                    alert('در این چالش فقط یک بلاک دریافت مقدار متغیر میتوان ساخت.')
                         document.__failed();
                     return;
                 } else {
-                    addBlockExist = true;
-                    var variable_firstvariable = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('firstVariable'), Blockly.Variables.NAME_TYPE);
-                    var variable_secendvariable = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('secendVariable'), Blockly.Variables.NAME_TYPE);
-
-                    if (variable_firstvariable == variable_secendvariable) {
-                        alert('متغیر های انتخاب شده در جمع کننده اشتباه اند')
-                        document.__failed();
-                        return;
-                    }
+                    variableGet = true;
                 }
 
+            } else if (block.type == 'variables_set') {
+
+                if (variableSet > 1) {
+                    // alert
+                    alert('در این چالش فقط میتوان دو بلاک متغیر ساخت');
+                    document.__failed();
+                    return;
+                } else {
+                    ++variableSet;
+                }
+            } else if (block.type == 'lucky_varible_inc') {
+
+                if (incBlock == true) {
+                    alert('در این چالش فقط یک بلاک افزایش دهنده میتوان ساخت')
+                    document.__failed();
+                    return;
+                } else {
+                    incBlock = true;
+                }
             } else if (block.type == 'text_print') {
                 if (printBlockExist == true) {
                     alert('در این چالش فقط یک بلاک چاپ میتوان ساخت.')
@@ -164,11 +175,20 @@
                     printBlockExist = true;
                 }
 
+            } else if (block.type == 'controls_repeat_ext') {
+
+                if (loopBlock == true) {
+                    alert('در این چالش فقط یک بلاک چاپ میتوان ساخت.')
+                    document.__failed();
+                    return;
+                } else {
+                    loopBlock = true;
+                }
             } else if (block.type == 'luck_start_app') {
                 if (startBlock == -1) {
                     startBlock = block;
                 } else {
-                    alert('لطفا فقط یک شروع تولید کنید')
+                    alert('لطفا فقط یک بلاک شروع تولید کنید')
                     document.__failed();
                     return;
                 }
@@ -181,8 +201,18 @@
                     document.__failed();
             return;
         }
-        if (variableBlocks.length != 2) {
-            alert('در این چالش باید دو متغیر تعریف کتید.');
+        if (!loopBlock) {
+            alert('بلاک حلقه ایجاد نشده است');
+            document.__failed();
+            return;
+        }
+        if (mathSetVar != 2) {
+            alert('در این چالش باید دو بلاک مقدار دهی وجود داشته باشد. یکی برای حلقه و دیگری برای متغیر');
+            document.__failed();
+            return;
+        }
+        if (!incBlock) {
+            alert('بلاک افزایش دهنده ایجاد نشده است');
             document.__failed();
             return;
         }
@@ -191,11 +221,12 @@
             document.__failed();
             return;
         }
-        if (!addBlockExist) {
-            alert('بلاک جمع کننده ایجاد نشده است');
+        if (!variableGet) {
+            alert('بلاک دریافت مقدار متغیر ایجاد نشده است');
             document.__failed();
             return;
         }
+        
 
         console.log(variableValues);
         eval(code);

@@ -266,3 +266,6 @@ label{
 .cur-h {
     cursor: pointer;
 }
+body {
+    font-family: omid;
+}
