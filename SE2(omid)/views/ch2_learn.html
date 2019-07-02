@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>startup</title>
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/bootstrap-rtl.css">
+    <link rel="stylesheet" href="../assets/css/uikit-rtl.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css"></head>
+<body>
+
+    <div id="container-1">
+        <button onclick="back()"  style="left: 20px; top: 20px; position: fixed; display: block; background: none;border-width: 0px;"><span><img style="width: 60px;" src="../assets/images/back_btn.png" alt=""></span></button>
+        <div id="head">
+            <h1 id="title-home">ساختار حلقه و استفاده از آن</h1>
+        </div>
+        <div id="area-text" style="border-bottom: 2px solid black">
+            <p id="text1">
+            <p>
+                خب بچه ها حلقه یعنی چه؟
+                حلقه مثل چیزی که پدر مادراتون دست کردن و با هم ازدواج کردن یا مثلا حلقه ای که ما تو حیاط مدرسه یا خونه دور هم جمع میشیم و دست هم دیگرو میگیریم و برای بازی حلقه درست میکنیم ولی حلقه توی برنامه نویسی به چه دردی میخوره؟
+                حلقه به شرایطی گفته میشه که در اون یه کاری بارها و بارها و بارها تکرار میشه.
+                حلقه به انگلیسی میشه  Loop .
+                حالا فرض کنید که ما یه حلقه داریم که بینهایت بار تکرار میشه و فرض کنید ما یه دونده ماراتن هستیم که میخوایم این مسیر رو بدوییم و برنده بشیم.
+                از نقطه اولیه شروع میکنیم و زمین دایرست و دوباره به نقطه اول برمیگردیم و همین عمل دوباره تکرار میشه چون این مسیر انتها نداره به این عمل عمل حلقه بی نهایت در برنامه نویسی میگویند.
+                حالا ممکنه یه سوال براتون به وجود بیاد که این به چه دردی میخوره اصلا؟!
+                اگه بازی انگری بردز رو بازی کرده باشین دیدین که تو هر مرحله چند پرنده وجود داره و مثلا شما یکیشونو شلیک میکنین و به خوک سبزا نمیخوره و  یکی دیگه رو شلیک میکنین و دوباره نمیخوره و دوبار دوباره دوباره شلیک میکنین به این عمل حلقه میگن. خب بچه ها این موضوع موضوع مهمیه  و باید حتما یادش بگیرید.
+                
+            </p>
+            <img style="margin-right: auto; margin-left: auto; display: block; width: 300px;" src="../assets/images/ch1_addTowNumber.png" alt="">
+        </div>
+        <div id="text-area2">
+            <h1 id="title" class="uk-margin-small-bottom"><span><img id="icon-title" src="../assets/images/5904.png" alt=""></span> آشنایی و استفاده از متغیر ها</h1>
+
+            <p id="text2">
+                عزیزم فرض کن که پدربرزگ به تو 5 تا سیب بده و مادربزرگ هم به تو 6 تا سیب بده.با کمک متغییر ها  نشون بده چند تا سیب داری.
+            </p>
+            <button id="btn-st" onclick="forward()">بزن بریم</button>
+        </div>
+    </div>
+
+    <script>
+        function back() {
+            window.location.href = 'index.html?step=1'
+        }
+        function forward() {
+            window.location.href = 'ch1.html'
+        }
+    </script>
+</body>
+</html>
