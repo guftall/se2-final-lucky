@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>startup</title>
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/bootstrap-rtl.css">
+    <link rel="stylesheet" href="../assets/css/uikit-rtl.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<div id="container">
+    <div id="title_Challenge_area">
+        <h1 id="title" class="uk-margin-small-bottom"><span><img id="icon-title" src="../assets/images/5904.png" alt=""></span> عنوان چالش</h1>
+        <p id="descript" class="uk-margin-small-bottom"><i class='fas fa-circle' style="font-size: 17px"></i>&nbsp;&nbsp;&nbsp;توضیح مختصری از چالش</p>
+        <div id="Area">
+<!--            <div id="content">-->
+<!--                <p id="blocky">blocky</p>-->
+<!--            </div>-->
+<!--            <div id="bottom">-->
+<!--                <i class='fas fa-play-circle' id="play"></i>-->
+<!--            </div>-->
+        </div>
+    </div>
+    <div id="success" class="uk-flex-top" uk-modal>
+
+            <img src="../assets/images/success.png" alt="" style="margin-left: auto; margin-right: auto; display: block">
+        <h1 style="text-align: center; color: white; font-family: omid; position: relative; top: -20px; font-size: 45px;">آفرین</h1>
+
+    </div>
+    <div id="faild" class="uk-flex-top" uk-modal>
+
+        <img src="../assets/images/error.png" alt="" style="margin-left: auto; margin-right: auto; display: block">
+        <h1 style="text-align: center; color: white; font-family: omid; position: relative; top: -20px; font-size: 45px;">دوباره تلاش کن</h1>
+
+    </div>
+</div>
+
+<script src="../assets/script/jquery.min.js"></script>
+<script src="../assets/script/bootstrap.min.js"></script>
+<script src="../assets/script/uikit.min.js"></script>
+<script src="../assets/script/uikit-icons.js"></script>
+<script src="../assets/script/script.js"></script>
+<script>
+    UIkit.modal("#success").show();
+    UIkit.modal("#faild").show();
+</script>
+</body>
+</html>

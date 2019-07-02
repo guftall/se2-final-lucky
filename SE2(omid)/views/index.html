@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>آموزش برنامه نویسی</title>
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/bootstrap-rtl.css">
+    <link rel="stylesheet" href="../assets/css/uikit-rtl.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <script src="../assets/script/jquery.min.js"></script>
+    <script src="https://blockly-demo.appspot.com/static/blockly_compressed.js"></script>
+    <script src="../assets/script/javascript_compressed.js"></script>
+    <script src="https://blockly-demo.appspot.com/static/blocks_compressed.js"></script>
+    <script src="https://blockly-demo.appspot.com/static/msg/js/fa.js"></script>
+
+</head>
+<body>
+
+    <div id="start-area" title="برای شروع کلیک کنید...">
+
+    </div>
+
+
+    <div id="step2">
+        <div id="container">
+            <div id="select-area">
+                <p id="title-select" class="uk-margin-medium-bottom">دوس داری کدوم چالش رو انتخاب کنی؟</p>
+                <div onclick="challangeClicked(1)" class="col-lg-6 col-md-6 col-sm-12 col-xs-12 uk-margin-medium-bottom">
+                    <h3 class="titles" style="color: #e55934"><i class='fas fa-circle' style="font-size: 17px"></i>&nbsp;&nbsp;چالش اول</h3>
+                    <p class="content_cha" style="color: #e55934">  لور ایپسوم متن ساختگی با تولید سادگی نا مفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است</p>
+                </div>
+                <div onclick="challangeClicked(2)" class="col-lg-6 col-md-6 col-sm-12 col-xs-12 uk-margin-medium-bottom">
+                    <h3 class="titles" style="color: #3c587e"><i class='fas fa-circle' style="font-size: 17px"></i>&nbsp;&nbsp;چالش دوم</h3>
+                    <p class="content_cha" style="color: #3c587e">  لور ایپسوم متن ساختگی با تولید سادگی نا مفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است</p>
+                </div>
+                <div onclick="challangeClicked(3)" class="col-lg-6 col-md-6 col-sm-12 col-xs-12 uk-margin-medium-bottom">
+                    <h3 class="titles" style="color: #7fb800"><i class='fas fa-circle' style="font-size: 17px"></i>&nbsp;&nbsp;چالش سوم</h3>
+                    <p class="content_cha" style="color: #7fb800">  لور ایپسوم متن ساختگی با تولید سادگی نا مفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است</p>
+                </div>
+                <div onclick="challangeClicked(4)" class="col-lg-6 col-md-6 col-sm-12 col-xs-12 uk-margin-medium-bottom">
+                    <h3 class="titles" style="color: #2ec4b6"><i class='fas fa-circle' style="font-size: 17px"></i>&nbsp;&nbsp;چالش چهارم</h3>
+                    <p class="content_cha" style="color: #2ec4b6">  لور ایپسوم متن ساختگی با تولید سادگی نا مفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است</p>
+                </div>
+                <div onclick="challangeClicked(5)" class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <h3 class="titles" style="color: #247ba0"><i class='fas fa-circle' style="font-size: 17px"></i>&nbsp;&nbsp;چالش پنجم</h3>
+                    <p class="content_cha" style="color: #247ba0">  لور ایپسوم متن ساختگی با تولید سادگی نا مفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است</p>
+                </div>
+                <div style="clear: both;"></div>
+            </div>
+            <div id="about-area">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 uk-margin-medium-bottom"><button class="btn" id="btn-about">درباره ما</button></div>
+                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12 uk-margin-medium-top">
+                    <img src="../assets/images/Asset%201.png" style="position: relative;
+            top: -100px;" alt="">
+                </div>
+            </div>
+        </div>
+        <div id="wellcome-modal" class="uk-flex-top" uk-modal>
+            <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical" id="b" style="height: 100%" uk-overflow-auto>
+        
+                <div id="img-area"></div>
+                <div id="content-area">
+                    <div class="uk-modal-body" style="border: none!important;">
+                        <h1 id="hello" class="uk-margin-large-bottom">سلام عزیزم</h1>
+        
+                        <div class="uk-margin-large-top"  style="margin-top: 140px!important;">
+                            <label class="uk-form-label uk-margin-medium-bottom" for="name">اسمت چیه؟</label>
+                            <div class="uk-form-controls">
+                                <input class="uk-input" id="name" type="text">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="uk-modal-footer uk-text-right" style="border: none!important;">
+                        <button class="uk-margin-large-top" id="btn-start">بزن بریم</button>
+                    </div>
+        
+        
+                </div>
+        
+        
+            </div>
+        </div>
+    </div>
+    <div id="step3">
+        <div id="container">
+            <div id="title_Challenge_area">
+                <h1 id="title" class="uk-margin-small-bottom"><span><img id="icon-title" src="../assets/images/5904.png" alt=""></span> عنوان چالش</h1>
+                <p id="descript" class="uk-margin-small-bottom"><i class='fas fa-circle' style="font-size: 17px"></i>&nbsp;&nbsp;&nbsp;توضیح مختصری از چالش</p>
+                <div id="blocklyDiv" style="height: 500px; width: 800px;"></div>
+        <!--            <div id="content">-->
+        <!--                <p id="blocky">blocky</p>-->
+        <!--            </div>-->
+        <!--            <div id="bottom">-->
+        <!--                <i class='fas fa-play-circle' id="play"></i>-->
+        <!--            </div>-->
+        <button id="run">Run Code</button>
+            </div>
+            <div id="success" class="uk-flex-top" uk-modal>
+        
+                    <img src="../assets/images/success.png" alt="" style="margin-left: auto; margin-right: auto; display: block">
+                <h1 style="text-align: center; color: white; font-family: omid; position: relative; top: -20px; font-size: 45px;">آفرین</h1>
+        
+            </div>
+            <div id="faild" class="uk-flex-top" uk-modal>
+        
+                <img src="../assets/images/error.png" alt="" style="margin-left: auto; margin-right: auto; display: block">
+                <h1 style="text-align: center; color: white; font-family: omid; position: relative; top: -20px; font-size: 45px;">دوباره تلاش کن</h1>
+        
+            </div>
+        </div>  
+    </div>
+
+<script src="../assets/script/jquery.min.js"></script>
+<script src="../assets/script/bootstrap.min.js"></script>
+<script src="../assets/script/uikit.min.js"></script>
+<script src="../assets/script/uikit-icons.js"></script>
+<script src="../assets/script/script.js"></script>
+<script>
+    var success = UIkit.modal("#success");
+    var faild = UIkit.modal("#faild");
+    var startArea = $('#start-area');
+    var step2 = $('#step2')
+    var step3 = $('#step3')
+    $(document).ready(function() {
+        step2.hide();
+        step3.hide();
+    })
+    startArea.click(function() {
+        startArea.hide();
+        step2.show(500);
+    })
+
+    function challangeClicked(id) {
+        switch (id) {
+            case 1:
+                window.location.href = "ch1.html";
+                break;
+            case 2:
+                window.location.href = "ch2.html";
+                break;
+        }
+        step2.hide();
+        step3.show();
+    }
+
+
+    var workspace = Blockly.inject('blocklyDiv',
+    {
+        maxBlocks: 100,
+        toolbox: document.getElementById('toolbox')
+    });
+    var code = '';
+    function myUpdateFunction(event) {
+        code = Blockly.JavaScript.workspaceToCode(workspace);
+        console.log(code);
+    }
+    workspace.addChangeListener(myUpdateFunction);
+
+    $('#run').click(function() {
+        
+        eval(code);
+    })
+
+</script>
+</body>
+</html>

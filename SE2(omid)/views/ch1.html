@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>آموزش برنامه نویسی</title>
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/bootstrap-rtl.css">
+    <link rel="stylesheet" href="../assets/css/uikit-rtl.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <script src="../assets/script/jquery.min.js"></script>
+    <script src="https://blockly-demo.appspot.com/static/blockly_compressed.js"></script>
+    <script src="../assets/script/javascript_compressed.js"></script>
+    <script src="https://blockly-demo.appspot.com/static/blocks_compressed.js"></script>
+    <script src="https://blockly-demo.appspot.com/static/msg/js/fa.js"></script>
+
+</head>
+<body>
+
+    <div id="step3">
+        <div id="container">
+            <div id="title_Challenge_area">
+                <h1 id="title" class="uk-margin-small-bottom"><span><img id="icon-title" src="../assets/images/5904.png" alt=""></span> عنوان چالش</h1>
+                <p id="descript" class="uk-margin-small-bottom"><i class='fas fa-circle' style="font-size: 17px"></i>&nbsp;&nbsp;&nbsp;توضیح مختصری از چالش</p>
+                <div id="blocklyDiv" style="height: 400px; width: 90%; margin: 0 auto;"></div>
+        <button id="run">Run Code</button>
+            </div>
+            <div id="success" class="uk-flex-top" uk-modal>
+        
+                    <img src="../assets/images/success.png" alt="" style="margin-left: auto; margin-right: auto; display: block">
+                <h1 style="text-align: center; color: white; font-family: omid; position: relative; top: -20px; font-size: 45px;">آفرین</h1>
+        
+            </div>
+            <div id="faild" class="uk-flex-top" uk-modal>
+        
+                <img src="../assets/images/error.png" alt="" style="margin-left: auto; margin-right: auto; display: block">
+                <h1 style="text-align: center; color: white; font-family: omid; position: relative; top: -20px; font-size: 45px;">دوباره تلاش کن</h1>
+        
+            </div>
+        </div>  
+    </div>
+
+    <xml id="toolbox" style="display: none">
+        <category name="مقدار ها" colour="210">
+            <!-- <block type="controls_repeat_ext"></block> -->
+            <block type="math_number"></block>
+            <block type="text"></block>
+            <block type="text_print"></block>
+            <block type="lucky_addtownumber"></block>
+            <block type="luck_start_app"></block>
+        </category>
+
+        <category name="متغیر ها" colour="330" custom="VARIABLE"></category>
+
+        
+      </xml>
+
+<script src="../assets/script/jquery.min.js"></script>
+<script src="../assets/script/bootstrap.min.js"></script>
+<script src="../assets/script/uikit.min.js"></script>
+<script src="../assets/script/uikit-icons.js"></script>
+<script src="../assets/script/script.js"></script>
+<script src="../assets/script/lucky_addTowNumberDef.js"></script>
+<script src="../assets/script/lucky_addTowNumberStub.js"></script>
+<script src="../assets/script/luck_start_app_def.js"></script>
+<script src="../assets/script/luck_start_app_stub.js"></script>
+<script>
+    var success = UIkit.modal("#success");
+    var faild = UIkit.modal("#faild");
+    var step3 = $('#step3')
+    $(document).ready(function() {
+    })
+    var workspace = Blockly.inject('blocklyDiv',
+    {
+        maxBlocks: 100,
+        toolbox: document.getElementById('toolbox')
+    });
+    var code = '';
+    function myUpdateFunction(event) {
+        code = Blockly.JavaScript.workspaceToCode(workspace);
+        // console.log(code);
+    }
+    workspace.addChangeListener(myUpdateFunction);
+    $('#run').click(function() {
+        
+        var blocks = workspace.getAllBlocks();
+
+        let startBlock = -1;
+        for (let block of blocks) {
+            if (block.type == 'luck_start_app') {
+                startBlock = block;
+                break
+                // console.log(block.getFieldValue('TEXT'));
+            }
+        }
+
+        if (startBlock == -1) {
+            alert('بلاک اصلی انتخاب نشده');
+        }
+
+        Blockly.JavaScript.statementToCode(startBlock, 'DO')
+        
+        // eval(code);s
+    })
+
+</script>
+</body>
+</html>
