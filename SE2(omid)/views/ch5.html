@@ -60,18 +60,6 @@
 
         
       </xml>
-      <div id="success" class="uk-flex-top" uk-modal>
-
-            <img src="../assets/images/success.png" alt="" style="margin-left: auto; margin-right: auto; display: block">
-        <h1 style="text-align: center; color: white; font-family: omid; position: relative; top: -20px; font-size: 45px;">آفرین</h1>
-
-    </div>
-    <div id="faild" class="uk-flex-top" uk-modal>
-
-        <img src="../assets/images/error.png" alt="" style="margin-left: auto; margin-right: auto; display: block">
-        <h1 style="text-align: center; color: white; font-family: omid; position: relative; top: -20px; font-size: 45px;">دوباره تلاش کن</h1>
-
-    </div>
 
 <script src="../assets/script/jquery.min.js"></script>
 <script src="../assets/script/bootstrap.min.js"></script>
@@ -96,17 +84,7 @@
     var code = '';
     function myUpdateFunction(event) {
         code = Blockly.JavaScript.workspaceToCode(workspace);
-        console.log(code);
-    }
-
-    function success() {
-
-        UIkit.modal("#success").show();
-        // UIkit.modal("#faild").show();
-    }
-
-    function failed() {
-
+        // console.log(code);
     }
     workspace.addChangeListener(myUpdateFunction);
     $('#run').click(function() {
@@ -124,28 +102,11 @@
 
         if (startBlock == -1) {
             alert('بلاک اصلی انتخاب نشده');
-            return;
         }
 
-        eval(code);
-        let _v1;
-        let _v2;
-        for (let prop in document.omid1) {
-            _v1 = document.omid1[prop];
-            console.log(this[prop])
-
-            break;
-        }
-        for (let prop in document.omid2) {
-            _v2 = document.omid2[prop];
-            console.log(this[prop])
-            break;
-        }
-
-        if (_v1 + _v2 == 15) {
-            success();
-        }
-        console.log(document.omid1);
+        Blockly.JavaScript.statementToCode(startBlock, 'DO')
+        
+        // eval(code);s
     })
 
 </script>
