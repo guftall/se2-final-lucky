@@ -24,6 +24,8 @@
 
     <div id="step3">
         <div id="container">
+        <button onclick="back()"  style="left: 20px; top: 20px; position: fixed; display: block; background: none;border-width: 0px;"><span><img style="width: 60px;" src="../assets/images/back_btn.png" alt=""></span></button>
+
             <div id="title_Challenge_area">
                 <h1 id="title" class="uk-margin-small-bottom"><span><img id="icon-title" src="../assets/images/5904.png" alt=""></span> عنوان چالش</h1>
                 <p id="descript" class="uk-margin-small-bottom"><i class='fas fa-circle' style="font-size: 17px"></i>&nbsp;&nbsp;&nbsp;توضیح مختصری از چالش</p>
@@ -67,9 +69,11 @@
 
     </div>
     <div id="faild" class="uk-flex-top" uk-modal>
-
-        <img src="../assets/images/error.png" alt="" style="margin-left: auto; margin-right: auto; display: block">
-        <h1 style="text-align: center; color: white; font-family: omid; position: relative; top: -20px; font-size: 45px;">دوباره تلاش کن</h1>
+            <div class="uk-modal-dialog uk-modal-body ">
+                <h2 class="uk-modal-title"></h2>
+                <img src="../assets/images/error.png" alt="" style="margin-left: auto; margin-right: auto; display: block;">
+                <h1 style="text-align: center; color: white; font-family: omid; position: relative; top: -20px; font-size: 45px;">دوباره تلاش کن</h1>
+            </div>
 
     </div>
 
@@ -99,54 +103,117 @@
         console.log(code);
     }
 
-    function success() {
+    function __success() {
 
-        UIkit.modal("#success").show();
-        // UIkit.modal("#faild").show();
+        success.show();
     }
+    document.__success = __success;
 
     function failed() {
 
+        faild.show();
     }
+    $('#faild').click(() => {
+        faild.hide('1000');
+    })
+    document.__failed = failed;
     workspace.addChangeListener(myUpdateFunction);
     $('#run').click(function() {
-        
         var blocks = workspace.getAllBlocks();
+        var variableBlocks = [];
+        var variableValues = [];
+        let addBlockExist = false;
+        let printBlockExist = false;
 
         let startBlock = -1;
         for (let block of blocks) {
-            if (block.type == 'luck_start_app') {
-                startBlock = block;
-                break
+            if (block.type == 'math_number') {
+                if (variableBlocks.length < 2) {
+                    variableBlocks.push(block);
+
+                    let val = block.getFieldValue('NUM');
+                    variableValues.push(val);
+                } else {
+                    alert('در این چالش فقط به دو متغیر نیاز است. لطفا فقط دو متغیر تعریف کنید.')
+                        document.__failed();
+                    return;
+                }
+                
+            } else if (block.type == 'lucky_addtownumber') {
+                if (addBlockExist == true) {
+                    alert('در این چالش فقط یک بلاک جمع کننده میتوان ساخت.')
+                        document.__failed();
+                    return;
+                } else {
+                    addBlockExist = true;
+                    var variable_firstvariable = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('firstVariable'), Blockly.Variables.NAME_TYPE);
+                    var variable_secendvariable = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('secendVariable'), Blockly.Variables.NAME_TYPE);
+
+                    if (variable_firstvariable == variable_secendvariable) {
+                        alert('متغیر های انتخاب شده در جمع کننده اشتباه اند')
+                        document.__failed();
+                        return;
+                    }
+                }
+
+            } else if (block.type == 'text_print') {
+                if (printBlockExist == true) {
+                    alert('در این چالش فقط یک بلاک چاپ میتوان ساخت.')
+                    document.__failed();
+                    return;
+                } else {
+                    printBlockExist = true;
+                }
+
+            } else if (block.type == 'luck_start_app') {
+                if (startBlock == -1) {
+                    startBlock = block;
+                } else {
+                    alert('لطفا فقط یک شروع تولید کنید')
+                    document.__failed();
+                    return;
+                }
                 // console.log(block.getFieldValue('TEXT'));
             }
         }
 
         if (startBlock == -1) {
-            alert('بلاک اصلی انتخاب نشده');
+            alert('بلاک شروع ایجاد نشده است');
+                    document.__failed();
+            return;
+        }
+        if (variableBlocks.length != 2) {
+            alert('در این چالش باید دو متغیر تعریف کتید.');
+            document.__failed();
+            return;
+        }
+        if (!printBlockExist) {
+            alert('بلاک چاپ ایجاد نشده است');
+            document.__failed();
+            return;
+        }
+        if (!addBlockExist) {
+            alert('بلاک جمع کننده ایجاد نشده است');
+            document.__failed();
             return;
         }
 
+        console.log(variableValues);
         eval(code);
-        let _v1;
-        let _v2;
-        for (let prop in document.omid1) {
-            _v1 = document.omid1[prop];
-            console.log(this[prop])
+        if (+variableValues[0] + +variableValues[1] == 15) {
 
-            break;
-        }
-        for (let prop in document.omid2) {
-            _v2 = document.omid2[prop];
-            console.log(this[prop])
-            break;
+            document.__success();
+        } else {
+
+            document.__failed();
         }
 
-        if (_v1 + _v2 == 15) {
-            success();
-        }
-        console.log(document.omid1);
     })
+
+    
+    function back() {
+        window.location.href = 'ch1_learn.html'
+    }
 
 </script>
 </body>

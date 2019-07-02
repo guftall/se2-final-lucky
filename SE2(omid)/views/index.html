@@ -27,23 +27,23 @@
         <div id="container">
             <div id="select-area">
                 <p id="title-select" class="uk-margin-medium-bottom">دوس داری کدوم چالش رو انتخاب کنی؟</p>
-                <div onclick="challangeClicked(1)" class="col-lg-6 col-md-6 col-sm-12 col-xs-12 uk-margin-medium-bottom">
+                <div onclick="challangeClicked(1)" class="col-lg-6 col-md-6 col-sm-12 col-xs-12 uk-margin-medium-bottom cur-h">
                     <h3 class="titles" style="color: #e55934"><i class='fas fa-circle' style="font-size: 17px"></i>&nbsp;&nbsp;چالش اول</h3>
                     <p class="content_cha" style="color: #e55934">  لور ایپسوم متن ساختگی با تولید سادگی نا مفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است</p>
                 </div>
-                <div onclick="challangeClicked(2)" class="col-lg-6 col-md-6 col-sm-12 col-xs-12 uk-margin-medium-bottom">
+                <div onclick="challangeClicked(2)" class="col-lg-6 col-md-6 col-sm-12 col-xs-12 uk-margin-medium-bottom cur-h">
                     <h3 class="titles" style="color: #3c587e"><i class='fas fa-circle' style="font-size: 17px"></i>&nbsp;&nbsp;چالش دوم</h3>
                     <p class="content_cha" style="color: #3c587e">  لور ایپسوم متن ساختگی با تولید سادگی نا مفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است</p>
                 </div>
-                <div onclick="challangeClicked(3)" class="col-lg-6 col-md-6 col-sm-12 col-xs-12 uk-margin-medium-bottom">
+                <div onclick="challangeClicked(3)" class="col-lg-6 col-md-6 col-sm-12 col-xs-12 uk-margin-medium-bottom cur-h">
                     <h3 class="titles" style="color: #7fb800"><i class='fas fa-circle' style="font-size: 17px"></i>&nbsp;&nbsp;چالش سوم</h3>
                     <p class="content_cha" style="color: #7fb800">  لور ایپسوم متن ساختگی با تولید سادگی نا مفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است</p>
                 </div>
-                <div onclick="challangeClicked(4)" class="col-lg-6 col-md-6 col-sm-12 col-xs-12 uk-margin-medium-bottom">
+                <div onclick="challangeClicked(4)" class="col-lg-6 col-md-6 col-sm-12 col-xs-12 uk-margin-medium-bottom cur-h">
                     <h3 class="titles" style="color: #2ec4b6"><i class='fas fa-circle' style="font-size: 17px"></i>&nbsp;&nbsp;چالش چهارم</h3>
                     <p class="content_cha" style="color: #2ec4b6">  لور ایپسوم متن ساختگی با تولید سادگی نا مفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است</p>
                 </div>
-                <div onclick="challangeClicked(5)" class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div onclick="challangeClicked(5)" class="col-lg-6 col-md-6 col-sm-12 col-xs-12 cur-h">
                     <h3 class="titles" style="color: #247ba0"><i class='fas fa-circle' style="font-size: 17px"></i>&nbsp;&nbsp;چالش پنجم</h3>
                     <p class="content_cha" style="color: #247ba0">  لور ایپسوم متن ساختگی با تولید سادگی نا مفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است</p>
                 </div>
@@ -57,30 +57,64 @@
                 </div>
             </div>
         </div>
-        <div id="wellcome-modal" class="uk-flex-top" uk-modal>
-            <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical" id="b" style="height: 100%" uk-overflow-auto>
-        
-                <div id="img-area"></div>
-                <div id="content-area">
-                    <div class="uk-modal-body" style="border: none!important;">
-                        <h1 id="hello" class="uk-margin-large-bottom">سلام عزیزم</h1>
-        
-                        <div class="uk-margin-large-top"  style="margin-top: 140px!important;">
-                            <label class="uk-form-label uk-margin-medium-bottom" for="name">اسمت چیه؟</label>
-                            <div class="uk-form-controls">
-                                <input class="uk-input" id="name" type="text">
-                            </div>
+    </div>
+
+    <div id="wellcome-modal" class="uk-flex-top" uk-modal="esc-close: false; bg-close: false;">
+        <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical" id="b" style="height: 100%" uk-overflow-auto>
+    
+            <div id="img-area"></div>
+            <div id="content-area">
+                <div class="uk-modal-body" style="border: none!important;">
+                    <h1 id="hello" class="uk-margin-large-bottom">سلام عزیزم</h1>
+    
+                    <div class="uk-margin-large-top"  style="margin-top: 140px!important;">
+                        <label class="uk-form-label uk-margin-medium-bottom" for="name">اسمت چیه؟</label>
+                        <div class="uk-form-controls">
+                            <input class="uk-input" id="in-name" type="text">
                         </div>
                     </div>
-                    <div class="uk-modal-footer uk-text-right" style="border: none!important;">
-                        <button class="uk-margin-large-top" id="btn-start">بزن بریم</button>
-                    </div>
-        
-        
                 </div>
-        
-        
+                <div class="uk-modal-footer uk-text-right" style="border: none!important;">
+                    <button class="uk-margin-large-top" id="btn-start">بزن بریم</button>
+                </div>
+    
+    
             </div>
+    
+    
+        </div>
+    </div>
+    
+    <div id="about-modal" uk-modal>
+        <div class="uk-modal-dialog">
+            <button class="uk-modal-close" type="button" uk-close style="float: right!important; margin-top: 5px; margin-right: 10px"></button>
+            <div class="uk-modal-header" style="border-bottom: none!important;">
+                <h2 class="uk-modal-title" id="title-about">Lucky Group</h2>
+            </div>
+            <div class="uk-modal-body">
+               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 uk-margin-medium-bottom" >
+                   <img src="../assets/images/Picture1.jpg" alt="" class="my-img">
+                   <div class="area-info">
+                       <p class="my-info">فرزاد فیاض</p>
+                       <p class="my-info">@farzadfayyaz96</p>
+                   </div>
+               </div>
+               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 uk-margin-medium-bottom">
+                   <img src="../assets/images/Picture2.jpg" alt="" class="my-img">
+                   <div class="area-info">
+                       <p class="my-info">پدرام مظفری</p>
+                       <p class="my-info">@Seniorpedram</p>
+                   </div>
+               </div>
+               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                   <img src="../assets/images/Picture3.jpg" alt="" class="my-img">
+                   <div class="area-info">
+                       <p class="my-info">امید دهقانی</p>
+                       <p class="my-info">@oMID_76</p>
+                   </div>
+               </div>
+            </div>
+    
         </div>
     </div>
 
@@ -92,15 +126,27 @@
 <script>
     var success = UIkit.modal("#success");
     var faild = UIkit.modal("#faild");
+    var welcomeModal = UIkit.modal('#wellcome-modal');
     var startArea = $('#start-area');
-    var step2 = $('#step2')
-    $(document).ready(function() {
-        step2.hide();
+    var step2 = $('#step2');
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const myParam = urlParams.get('step');  
+
+    if (myParam != null) {
+        
+        startArea.hide();
+    }
+    $(document).ready(function() { 
+        if (myParam == null) {
+            step2.hide();
+        }
     })
     startArea.click(function() {
         startArea.hide();
+        welcomeModal.show();
         step2.show(500);
-    })
+    });
 
     function challangeClicked(id) {
         switch (id) {
@@ -121,6 +167,23 @@
                 break;
         }
     }
+
+    $("#btn-about").click(function () {
+        UIkit.modal("#about-modal").show();
+    })
+
+    $('#btn-start').click(function() {
+        let name = $('#in-name').val();
+
+        var letters = /^[A-Za-z]+$/;
+        if (!(name != null && typeof(name) == 'string' && name.length > 0)) {
+            name.replace(/ /g, '');
+            if (!name.match(letters))
+            alert('لطفا نام خود را معتبر وارد کتید');
+            return;
+        }
+        welcomeModal.hide();
+    })
 
 </script>
 </body>

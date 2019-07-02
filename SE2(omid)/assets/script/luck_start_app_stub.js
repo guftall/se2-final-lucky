@@ -6,6 +6,5 @@ Blockly.JavaScript['luck_start_app'] = function(block) {
   // console.log(remainingCode);
 
   var code = statements_name;
-  console.log(code);
   return code;;
 };
