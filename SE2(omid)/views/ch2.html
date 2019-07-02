@@ -119,11 +119,10 @@
     workspace.addChangeListener(myUpdateFunction);
     $('#run').click(function() {
         var blocks = workspace.getAllBlocks();
-        var mathSetVar = false;
+        var mathSetVar = 0;
         var variableGet = false;
         var loopBlock = false;
         var incBlock = false;
-        let addBlockExist = false;
         let printBlockExist = false;
         let variableSet = 0;
 
@@ -131,12 +130,12 @@
         for (let block of blocks) {
             console.log(block.type);
             if (block.type == 'math_number') {
-                if (mathSetVar == true) {
-                    alert('در این چالش فقط یک بلاک مقداردهی متغیر میتوان ساخت');
+                if (mathSetVar > 1) {
+                    alert('در این چالش فقط دو بلاک مقداردهی متغیر میتوان ساخت');
                     document.__failed();
                     return;
                 } else {
-                    mathSetVar = true;
+                    ++mathSetVar;
                 }
                 
             } else if (block.type == 'variables_get') {
@@ -202,8 +201,18 @@
                     document.__failed();
             return;
         }
-        if (variableBlocks.length != 2) {
-            alert('در این چالش باید دو متغیر تعریف کتید.');
+        if (!loopBlock) {
+            alert('بلاک حلقه ایجاد نشده است');
+            document.__failed();
+            return;
+        }
+        if (mathSetVar != 2) {
+            alert('در این چالش باید دو بلاک مقدار دهی وجود داشته باشد. یکی برای حلقه و دیگری برای متغیر');
+            document.__failed();
+            return;
+        }
+        if (!incBlock) {
+            alert('بلاک افزایش دهنده ایجاد نشده است');
             document.__failed();
             return;
         }
@@ -212,11 +221,12 @@
             document.__failed();
             return;
         }
-        if (!addBlockExist) {
-            alert('بلاک جمع کننده ایجاد نشده است');
+        if (!variableGet) {
+            alert('بلاک دریافت مقدار متغیر ایجاد نشده است');
             document.__failed();
             return;
         }
+        
 
         console.log(variableValues);
         eval(code);
